@@ -13,7 +13,7 @@ namespace EduMS.Models
 
         [Display(Name ="学号")]
         public int S_Id { get; set; }
-        [Display(Name = "姓名")]
+        [Display(Name = "学生姓名")]
         public string S_Name { get; set; }
         [Display (Name ="性别")]
         public string S_Sex { get; set; }

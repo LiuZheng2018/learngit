@@ -7,5 +7,6 @@ namespace EduMS.Models
 {
     public class Score
     {
+        public int score { get; set; }
     }
 }
