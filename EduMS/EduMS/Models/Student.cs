@@ -21,6 +21,7 @@ namespace EduMS.Models
         public int S_Age { get; set; }
 
         public virtual ICollection <Course> Courses { get; set; }
+        public virtual ICollection <Score > Scores { get; set; }
 
 
     }

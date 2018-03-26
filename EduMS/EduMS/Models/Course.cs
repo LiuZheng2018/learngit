@@ -16,5 +16,6 @@ namespace EduMS.Models
 
         public virtual ICollection<Student > Students { get; set; }
         public virtual ICollection<Teacher> Teachers { get; set; }
+        public virtual ICollection<Score> Scores { get; set; }
     }
 }
