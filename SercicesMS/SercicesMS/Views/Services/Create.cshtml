@@ -1,0 +1,52 @@
+﻿@model SercicesMS.Models.Service
+
+@{
+    ViewBag.Title = "添加服务";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>添加服务</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div>
+    <div>
+        @Html.LabelFor(m => m.S_Name)
+        @Html.EditorFor(m => m.S_Name)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.S_Path)
+        @Html.EditorFor(m => m.S_Path)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Pic_Path)
+        @Html.EditorFor(m => m.Pic_Path)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.S_User)
+        @Html.EditorFor(m => m.S_User)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.S_Pwd)
+        @Html.EditorFor(m => m.S_Pwd)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.S_CreatTime)
+        @Html.EditorFor(m => m.S_CreatTime)
+    </div>
+
+    <div>
+        <input type="submit" value="添加" />
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("返回列表", "Inf")
+</div>
+
+
+
+

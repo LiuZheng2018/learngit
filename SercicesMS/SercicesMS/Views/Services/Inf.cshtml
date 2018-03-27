@@ -1,0 +1,57 @@
+﻿
+@model IEnumerable<SercicesMS.Models.Service>
+@{
+    ViewBag.Title = "列表信息";
+   
+}
+
+<h2>信息汇总</h2>
+<p>
+    @Html.ActionLink("添加服务", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.S_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_Path)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_User)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_Pwd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_CreatTime)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_Path)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_User)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_Pwd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_CreatTime)
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("详情", "Details", new { id = item.ID }) |
+            @Html.ActionLink("删除", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+    }
+</table>
+
+
