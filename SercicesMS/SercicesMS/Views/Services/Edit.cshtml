@@ -1,0 +1,34 @@
+﻿@model SercicesMS.Models.Service
+@{
+    ViewBag.Title = "编辑";
+}
+
+<h2>编辑t</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <div>
+            @Html.LabelFor(m => m.S_Name)
+            @Html.EditorFor(m => m.S_Name)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.S_Path)
+            @Html.EditorFor(m => m.S_Path)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.S_User)
+            @Html.EditorFor(m => m.S_User)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.S_Pwd)
+            @Html.EditorFor(m => m.S_Pwd)
+        </div>
+
+
+        <div>
+            <input type="submit" value="保存" />
+        </div>
+    </div>
+}
+

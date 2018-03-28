@@ -1,17 +1,17 @@
 ﻿@model SercicesMS.Models.Service
 @{
-    ViewBag.Title = "详情";
+    ViewBag.Title = "删除";
 }
 
-<h2>详情</h2>
+<h2>删除</h2>
+<h3>你确定删除该信息吗？</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 <div>
     <div>
         @Html.DisplayNameFor(m => m.S_Name)
         @Html.DisplayFor(m => m.S_Name)
-    </div>
-    <div>
-        @Html.DisplayNameFor(m => m.Pic_Path)
-        @Html.DisplayFor(m => m.Pic_Path)
     </div>
     <div>
         @Html.DisplayNameFor(m => m.S_Path)
@@ -25,12 +25,14 @@
         @Html.DisplayNameFor(m => m.S_Pwd)
         @Html.DisplayFor(m => m.S_Pwd)
     </div>
+   
     <div>
-        @Html.DisplayNameFor(m => m.S_CreatTime)
-        @Html.DisplayFor(m => m.S_CreatTime)
+        <input type="submit" value="删除" />
     </div>
 </div>
+}
+
 <div>
-    @Html.ActionLink("编辑信息", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("返回列表", "Inf")
 </div>
+

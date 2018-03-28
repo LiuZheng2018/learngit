@@ -16,7 +16,7 @@ namespace SercicesMS.Migrations
                         S_Path = c.String(nullable: false, unicode: false),
                         Pic_Path = c.String(unicode: false),
                         S_User = c.String(unicode: false),
-                        S_Pwd = c.Int(nullable: false),
+                        S_Pwd = c.String(unicode: false),
                         S_CreatTime = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.ID);
