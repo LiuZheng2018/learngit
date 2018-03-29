@@ -5,15 +5,24 @@
 
 <h2>详情</h2>
 <div>
-    <img src="@Model.Pic_Path" height="300" />
+    @{ 
+        string x;
+        if (Model.Pic_Path == null)
+        {
+            x = "/File/no_picture.png";
+        }
+        else
+        {
+            x = Model.Pic_Path;
+        }
+
+    }
+    <img src="@x" height="300" />
     <div>
         @Html.DisplayNameFor(m => m.S_Name)
         @Html.DisplayFor(m => m.S_Name)
     </div>
-    <div>
-        @Html.DisplayNameFor(m => m.Pic_Path)
-        @Html.DisplayFor(m => m.Pic_Path)
-    </div>
+   
     <div>
         @Html.DisplayNameFor(m => m.S_Path)
         @Html.DisplayFor(m => m.S_Path)

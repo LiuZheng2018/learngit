@@ -51,11 +51,14 @@ namespace SercicesMS.Controllers
         public ActionResult Create([Bind(Include = "ID,S_Name,S_Path,Pic_Path,S_User,S_Pwd,S_CreatTime")] Service service, HttpPostedFileBase Pic)
         {
             //上传图片
-            var fileName = Pic.FileName;
-            var filePath = Server.MapPath(string.Format("~/{0}", "File"));
+            if (Pic!=null)
+            {
+                var fileName = Pic.FileName;
+                var filePath = Server.MapPath(string.Format("~/{0}", "File"));
+                service.Pic_Path = "/File/" + fileName;
+                Pic.SaveAs(Path.Combine(filePath, fileName));
+            }
             
-            service.Pic_Path = "/File/"+fileName;
-            Pic.SaveAs(Path.Combine(filePath, fileName));
             //
             if (ModelState.IsValid)
             {
@@ -77,8 +80,17 @@ namespace SercicesMS.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,S_Name,S_Path,Pic_Path,S_User,S_Pwd,S_CreatTime")] Service service)
+        public ActionResult Edit([Bind(Include = "ID,S_Name,S_Path,Pic_Path,S_User,S_Pwd,S_CreatTime")] Service service, HttpPostedFileBase Pic)
         {
+            //更改图片
+            if (Pic != null)
+            {
+                var fileName = Pic.FileName;
+                var filePath = Server.MapPath(string.Format("~/{0}", "File"));
+                service.Pic_Path = "/File/" + fileName;
+                Pic.SaveAs(Path.Combine(filePath, fileName));
+            }
+            //
             if (ModelState.IsValid)
             {
                 db.Entry(service).State = EntityState.Modified;
