@@ -3,7 +3,7 @@
     ViewBag.Title = "编辑";
 }
 
-<h2>编辑t</h2>
+<h2>编辑</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -24,8 +24,12 @@
             @Html.LabelFor(m => m.S_Pwd)
             @Html.EditorFor(m => m.S_Pwd)
         </div>
-
-
+        <div  style="display: none">
+            @Html.EditorFor(m=>m.Pic_Path)
+        </div>
+        <div  style="display: none">
+            @Html.EditorFor(m=>m.S_CreatTime)
+        </div>
         <div>
             <input type="submit" value="保存" />
         </div>

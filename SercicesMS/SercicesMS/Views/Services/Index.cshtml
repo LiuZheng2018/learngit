@@ -1,23 +1,34 @@
-﻿@model IEnumerable < SercicesMS.Models.Service>
+﻿@model IEnumerable<SercicesMS.Models.Service>
 @{
     ViewBag.Title = "首页";
 
 }
 
 <h2>首页</h2>
-@Html.ActionLink("列表查询", "Inf")
 
 
-    @foreach (var item in Model)
-    {
-    
-        <div>
-            <a href=" http://@item.S_Path">
-                <img src="@item.Pic_Path" height="120" width="150" />
-                @Html.DisplayFor(modelItem => item.S_Name)
-            </a>
-        
-            
-       </div>
-    
-    }
+@foreach (var item in Model)
+{
+   
+        string x;
+        if (item.Pic_Path == null)
+        {
+            x = "/File/no_picture.png";
+        }
+        else
+        {
+            x = item.Pic_Path;
+        }
+
+  
+
+    <div style="margin-bottom:40px;">
+        <a href=" http://@item.S_Path">
+            <img src="@x" height="120" width="150" /><br />
+            @Html.DisplayFor(modelItem => item.S_Name)
+        </a>
+
+
+    </div>
+
+}

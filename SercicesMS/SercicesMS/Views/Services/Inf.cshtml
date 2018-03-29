@@ -20,19 +20,19 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.S_Name)
+            @Html.DisplayNameFor(model => model.S_Name)&nbsp;&nbsp;&nbsp;
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.S_Path)
+            @Html.DisplayNameFor(model => model.S_Path)&nbsp;&nbsp;&nbsp;
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.S_User)
+            @Html.DisplayNameFor(model => model.S_User)&nbsp;&nbsp;&nbsp;
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.S_Pwd)
+            @Html.DisplayNameFor(model => model.S_Pwd)&nbsp;&nbsp;&nbsp;
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.S_CreatTime)
+            @Html.DisplayNameFor(model => model.S_CreatTime)&nbsp;&nbsp;&nbsp;
         </th>
     </tr>
     @foreach (var item in Model)
@@ -55,7 +55,7 @@
                 @Html.DisplayFor(modelItem => item.S_Pwd)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.S_CreatTime)
+                @Html.DisplayFor(modelItem => item.S_CreatTime)&nbsp;
             </td>
             <td>
                 @Html.ActionLink("编辑", "Edit", new { id = item.ID }) |

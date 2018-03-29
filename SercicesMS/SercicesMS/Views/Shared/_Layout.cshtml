@@ -10,7 +10,11 @@
 <body>
     <div>
         <p style="color:red ;">布局页面的内容</p>
-        @Html.ActionLink("主页","Index")
+        <table>
+            @Html.ActionLink("主页", "Index")&nbsp;&nbsp;
+            @Html.ActionLink("列表查询", "Inf")
+        </table>
+       
     </div>
     <div class="container body-content">
         <hr />
