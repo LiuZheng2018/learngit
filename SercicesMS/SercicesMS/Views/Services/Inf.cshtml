@@ -1,14 +1,22 @@
 ﻿
 @model IEnumerable<SercicesMS.Models.Service>
 @{
-    ViewBag.Title = "列表信息";
-   
+    ViewBag.Title = "列表查询";
+
 }
 
 <h2>信息汇总</h2>
 <p>
     @Html.ActionLink("添加服务", "Create")
 </p>
+@using (Html.BeginForm("Inf", "Services", FormMethod.Get))
+{
+    <p>
+        服务名：@Html.TextBox("serviceName") 
+        用户名：@Html.DropDownList("userName", "All")
+        <input type="submit" value="筛选" />
+    </p>
+}
 <table>
     <tr>
         <th>
@@ -29,28 +37,32 @@
     </tr>
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_Path)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_User)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_Pwd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_CreatTime)
-        </td>
-        <td>
-            @Html.ActionLink("编辑", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("详情", "Details", new { id = item.ID }) |
-            @Html.ActionLink("删除", "Delete", new { id = item.ID })
-        </td>
-    </tr>
+     
+       
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.S_Name)
+            </td>
+            <td>
+                <a href=" http://@item.S_Path">@item.S_Path</a>
+               
+               
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S_User)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S_Pwd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S_CreatTime)
+            </td>
+            <td>
+                @Html.ActionLink("编辑", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("详情", "Details", new { id = item.ID }) |
+                @Html.ActionLink("删除", "Delete", new { id = item.ID })
+            </td>
+        </tr>
     }
 </table>
 

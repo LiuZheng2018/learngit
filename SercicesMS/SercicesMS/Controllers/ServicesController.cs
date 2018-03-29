@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SercicesMS.Models;
 using System.Data.Entity;
+using System.IO;
 
 namespace SercicesMS.Controllers
 {
@@ -14,11 +15,32 @@ namespace SercicesMS.Controllers
         // GET: Services
         public ActionResult Index()
         {
-            return View();
-        }
-        public ActionResult Inf()
-        {
             return View(db.Services.ToList());
+        }
+        public ActionResult Inf(string userName,string serviceName)
+        {
+            //获取用户列表，去重
+            var UserLit = new List<string>();
+            var UserQry = from d in db.Services
+                           orderby d.S_User
+                           select d.S_User;
+            UserLit.AddRange(UserQry.Distinct());
+            ViewBag.userName = new SelectList(UserLit);
+            //默认
+            var services = from s in db.Services
+                           select s;
+            //筛选1：按服务名筛选
+            if (!String.IsNullOrEmpty(serviceName))
+            {
+                services = services.Where(s => s.S_Name.Contains(serviceName));
+            }
+            //筛选2：按用户名筛选
+            if (!String.IsNullOrEmpty(userName))
+            {
+                services = services.Where(s => s.S_User == userName);
+            }
+
+            return View(services);
         }
         public ActionResult Create()
         {
@@ -26,8 +48,15 @@ namespace SercicesMS.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,S_Name,S_Path,Pic_Path,S_User,S_Pwd,S_CreatTime")] Service service )
+        public ActionResult Create([Bind(Include = "ID,S_Name,S_Path,Pic_Path,S_User,S_Pwd,S_CreatTime")] Service service, HttpPostedFileBase Pic)
         {
+            //上传图片
+            var fileName = Pic.FileName;
+            var filePath = Server.MapPath(string.Format("~/{0}", "File"));
+            
+            service.Pic_Path = "/File/"+fileName;
+            Pic.SaveAs(Path.Combine(filePath, fileName));
+            //
             if (ModelState.IsValid)
             {
                 db.Services.Add(service);
@@ -73,5 +102,7 @@ namespace SercicesMS.Controllers
             db.SaveChanges();
             return RedirectToAction("Inf");
         }
+        
+     
     }
 }

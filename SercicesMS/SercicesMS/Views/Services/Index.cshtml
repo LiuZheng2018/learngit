@@ -1,9 +1,23 @@
-﻿
+﻿@model IEnumerable < SercicesMS.Models.Service>
 @{
     ViewBag.Title = "首页";
-   
+
 }
 
 <h2>首页</h2>
-@Html.ActionLink("列表", "Inf")
+@Html.ActionLink("列表查询", "Inf")
 
+
+    @foreach (var item in Model)
+    {
+    
+        <div>
+            <a href=" http://@item.S_Path">
+                <img src="@item.Pic_Path" height="120" width="150" />
+                @Html.DisplayFor(modelItem => item.S_Name)
+            </a>
+        
+            
+       </div>
+    
+    }
