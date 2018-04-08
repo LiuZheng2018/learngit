@@ -2,10 +2,12 @@
 @{
     ViewBag.Title = "详情";
 }
+<div class="page-header">
+    <h2>详情</h2>
+</div>
 
-<h2>详情</h2>
-<div>
-    @{ 
+
+    @{
         string x;
         if (Model.Pic_Path == null)
         {
@@ -17,17 +19,41 @@
         }
 
     }
-    <img src="@x" height="300" />
-    <div>
-        @Html.DisplayNameFor(m => m.S_Name)
-        @Html.DisplayFor(m => m.S_Name)
-    </div>
+  
+<div class="container ">
    
-    <div>
-        @Html.DisplayNameFor(m => m.S_Path)
-        @Html.DisplayFor(m => m.S_Path)
-    </div>
-    <div>
+    
+    <dl class="dl-horizontal col-sm-8 center-block">
+        <dt></dt>
+        <dd> <img src="@x" height="300" /></dd>
+        <dt></dt>
+        <dd><h2></h2></dd>
+        <dt>应用名称</dt>
+        <dd>@Model.S_Name</dd>
+        <dt>应用地址</dt>
+        <dd>@Model.S_Path</dd>
+        <dt>用户名</dt>
+        <dd>@Model.S_User</dd>
+        <dt>用户密码</dt>
+        <dd>@Model.S_Pwd</dd>
+        <dt>负责人</dt>
+        <dd>@Model.S_Admin</dd>
+        <dt>创建日期</dt>
+        <dd>@Model.S_CreatTime</dd>
+        <dt>最新修改日期</dt>
+        <dd>@Model.S_LastTime</dd>
+        <dt>备注信息</dt>
+        <dd>@Model.S_Remark</dd>
+    </dl>
+
+</div>
+  
+
+   
+   
+
+
+    @*<div>
         @Html.DisplayNameFor(m => m.S_User)
         @Html.DisplayFor(m => m.S_User)
     </div>
@@ -36,11 +62,23 @@
         @Html.DisplayFor(m => m.S_Pwd)
     </div>
     <div>
+        @Html.DisplayNameFor(m => m.S_Admin)
+        @Html.DisplayFor(m => m.S_Admin)
+    </div>
+    <div>
         @Html.DisplayNameFor(m => m.S_CreatTime)
         @Html.DisplayFor(m => m.S_CreatTime)
     </div>
-</div>
-<div>
-    @Html.ActionLink("编辑信息", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("返回列表", "Inf")
-</div>
+    <div>
+        @Html.DisplayNameFor(m => m.S_LastTime)
+        @Html.DisplayFor(m => m.S_LastTime)
+    </div>
+    <div>
+        @Html.DisplayNameFor(m => m.S_Remark)
+        @Html.DisplayFor(m => m.S_Remark)
+    </div>*@
+
+    <div>
+        @Html.ActionLink("编辑信息", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("返回列表", "Inf")
+    </div>

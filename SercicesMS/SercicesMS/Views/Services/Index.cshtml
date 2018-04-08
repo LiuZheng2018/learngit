@@ -3,13 +3,15 @@
     ViewBag.Title = "首页";
 
 }
+<div class="page-header">
+    <h2>首页</h2>
+</div>
 
-<h2>首页</h2>
 
-
-@foreach (var item in Model)
-{
-   
+@Html.ActionLink("列表显示", "Inf")
+<div class="row">
+    @foreach (var item in Model)
+    {
         string x;
         if (item.Pic_Path == null)
         {
@@ -19,16 +21,21 @@
         {
             x = item.Pic_Path;
         }
+        <div class="col-sm-4 col-md-3" style="height:310px">
+            <a href=" http://@item.S_Path" class="thumbnail">
+                <div style=" height:100% ; width:100%">
+                    <img src="@x" style=" height:100%  ;width:100%" /><br />
+                </div>
+                   
+               
+               
+                <div class="caption">
+                    <h4> @Html.DisplayFor(modelItem => item.S_Name)</h4>
+                    <small>用户名：@item.S_User </small><br/>
+                    <small>密码：@item.S_Pwd</small>
+                </div>
+            </a>
+        </div>
+    }
+</div>
 
-  
-
-    <div style="margin-bottom:40px;">
-        <a href=" http://@item.S_Path">
-            <img src="@x" height="120" width="180" /><br />
-            @Html.DisplayFor(modelItem => item.S_Name)
-        </a>
-
-
-    </div>
-
-}

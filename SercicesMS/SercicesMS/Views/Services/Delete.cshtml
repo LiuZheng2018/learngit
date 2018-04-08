@@ -1,38 +1,39 @@
 ﻿@model SercicesMS.Models.Service
 @{
+    /**/
+
     ViewBag.Title = "删除";
 }
+<div class="page-header">
+    <h2>删除</h2>
+    <h3>你确定删除该信息吗？</h3>
+</div>
 
-<h2>删除</h2>
-<h3>你确定删除该信息吗？</h3>
+
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.S_Name)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.S_Name)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.S_Path)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.S_Path)
+    </dd>
+</dl>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-<div>
-    <div>
-        @Html.DisplayNameFor(m => m.S_Name)
-        @Html.DisplayFor(m => m.S_Name)
+
+    <div class="form-actions no-color">
+        <input type="submit" value="删除" class="btn btn-default" /> |
+        @Html.ActionLink("返回列表", "Inf")
     </div>
-    <div>
-        @Html.DisplayNameFor(m => m.S_Path)
-        @Html.DisplayFor(m => m.S_Path)
-    </div>
-    <div>
-        @Html.DisplayNameFor(m => m.S_User)
-        @Html.DisplayFor(m => m.S_User)
-    </div>
-    <div>
-        @Html.DisplayNameFor(m => m.S_Pwd)
-        @Html.DisplayFor(m => m.S_Pwd)
-    </div>
-   
-    <div>
-        <input type="submit" value="删除" />
-    </div>
-</div>
 }
-
-<div>
-    @Html.ActionLink("返回列表", "Inf")
-</div>
-

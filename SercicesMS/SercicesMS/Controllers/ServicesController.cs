@@ -48,7 +48,7 @@ namespace SercicesMS.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,S_Name,S_Path,Pic_Path,S_User,S_Pwd,S_CreatTime")] Service service, HttpPostedFileBase Pic)
+        public ActionResult Create([Bind(Include = "ID,S_Name,S_Path,Pic_Path,S_User,S_Pwd,S_CreatTime,S_LastTime,S_Admin,S_Remark")] Service service, HttpPostedFileBase Pic)
         {
             //上传图片
             if (Pic!=null)
@@ -58,7 +58,9 @@ namespace SercicesMS.Controllers
                 service.Pic_Path = "/File/" + fileName;
                 Pic.SaveAs(Path.Combine(filePath, fileName));
             }
-            
+            //获取创建和修改时间
+            service.S_CreatTime = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
+            service.S_LastTime = service.S_CreatTime;
             //
             if (ModelState.IsValid)
             {
@@ -80,7 +82,7 @@ namespace SercicesMS.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,S_Name,S_Path,Pic_Path,S_User,S_Pwd,S_CreatTime")] Service service, HttpPostedFileBase Pic)
+        public ActionResult Edit([Bind(Include = "ID,S_Name,S_Path,Pic_Path,S_User,S_Pwd,S_CreatTime,S_LastTime,S_Admin,S_Remark")] Service service, HttpPostedFileBase Pic)
         {
             //更改图片
             if (Pic != null)
@@ -90,6 +92,8 @@ namespace SercicesMS.Controllers
                 service.Pic_Path = "/File/" + fileName;
                 Pic.SaveAs(Path.Combine(filePath, fileName));
             }
+            //修改时间
+            service.S_LastTime = DateTime.Now.ToLongDateString()+" "+DateTime.Now.ToLongTimeString();
             //
             if (ModelState.IsValid)
             {
@@ -114,7 +118,7 @@ namespace SercicesMS.Controllers
             db.SaveChanges();
             return RedirectToAction("Inf");
         }
-        
+      
      
     }
 }

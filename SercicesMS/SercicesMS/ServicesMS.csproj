@@ -101,6 +101,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -115,6 +117,14 @@
     <Compile Include="Migrations\201803270854323_Service.cs" />
     <Compile Include="Migrations\201803270854323_Service.Designer.cs">
       <DependentUpon>201803270854323_Service.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803300313206_Service1.cs" />
+    <Compile Include="Migrations\201803300313206_Service1.Designer.cs">
+      <DependentUpon>201803300313206_Service1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803300317145_Service2.cs" />
+    <Compile Include="Migrations\201803300317145_Service2.Designer.cs">
+      <DependentUpon>201803300317145_Service2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Service.cs" />
@@ -146,6 +156,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803270854323_Service.resx">
       <DependentUpon>201803270854323_Service.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803300313206_Service1.resx">
+      <DependentUpon>201803300313206_Service1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803300317145_Service2.resx">
+      <DependentUpon>201803300317145_Service2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

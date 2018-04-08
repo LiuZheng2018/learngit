@@ -6,22 +6,46 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - 服务管理</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />*@
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    @*<link rel="stylesheet" href="~/Content/bootstrap.min.css"/>
+        <script src="~/Content/bootstrap.min.js"></script>*@
 </head>
 <body>
-    <div>
-        <p style="color:red ;">布局页面的内容</p>
-        <table>
-            @Html.ActionLink("主页", "Index")&nbsp;&nbsp;
-            @Html.ActionLink("列表查询", "Inf")
-        </table>
-       
-    </div>
+    <nav class="navbar navbar-default " role="navigation" >
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">应用管理系统</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li >@Html.ActionLink("主页", "Index")</li>
+                    <li>@Html.ActionLink("查询", "Inf")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            管理 <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("添加", "Create")</li>
+                            <li>@Html.ActionLink("编辑|查询", "Inf")</li>
+                        </ul>
+                    </li>
+                </ul>
+               
+            </div>
+        </div>
+    </nav>
+    
+
+
     <div class="container body-content">
-        <hr />
         @RenderBody()
-        <hr />
         <footer>
-            <p style="color:red ;">这里属于布局页的页脚</p>
+           
+                <span  style="margin-bottom:2%; position:relative; left:44%; font-family:arial;">Copyright &copy; zjgis2018</span>
+           
         </footer>
     </div>
 </body>

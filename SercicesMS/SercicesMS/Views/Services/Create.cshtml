@@ -1,52 +1,76 @@
 ﻿@model SercicesMS.Models.Service
 
 @{
-    ViewBag.Title = "添加服务";
+    ViewBag.Title = "添加应用";
 
 }
 
-<h2>添加服务</h2>
+<div class="page-header">
+    <h2>添加应用</h2>
 
-<form action="/Services/Create" method="post" enctype="multipart/form-data">
+</div>
+
+<form class="form-horizontal " role="form" action="/Services/Create" method="post" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
-    
-       
-    <div>
-        <img src="~/File/no_picture.png" id="xmTanImg" height="200" />
-        <div id="xmTanDiv"></div>
-        <p>
-            选择将要上传的图片：<input type="file" name="Pic" id=" xdaTanFileImg" onchange="xmTanUploadImg(this)" accept="image/*" />
-        </p>
 
+
+ 
+    <div class="form-group">
+        <label for="inputfile" class="col-sm-2 control-label">上传图片</label>
+        <div class="col-sm-10">
+            <img src="~/File/no_picture.png" id="xmTanImg" height="200" />
+            <div id="xmTanDiv"></div>
+            <input type="file" name="Pic"  id=" xdaTanFileImg inputfile" onchange="xmTanUploadImg(this)" accept="image/*" />
+        </div>
     </div>
     
-    <div>
-        <div>
-            @Html.LabelFor(m => m.S_Name)
-            @Html.EditorFor(m => m.S_Name)
-        </div>
-        <div>
-            @Html.LabelFor(m => m.S_Path)
-            @Html.EditorFor(m => m.S_Path)
+        <div class="form-group">
+                <label for="S_Name" class="col-sm-2 control-label">服务名称</label>
+            <div class="col-sm-8">
+                <input  type="text" class="form-control"  placeholder="请输入服务名称" data-val="true" data-val-required="服务名称 字段是必需的。" id="S_Name" name="S_Name"   />
+            </div>
         </div>
 
-        <div>
-            @Html.LabelFor(m => m.S_User)
-            @Html.EditorFor(m => m.S_User)
-        </div>
-        <div>
-            @Html.LabelFor(m => m.S_Pwd)
-            @Html.EditorFor(m => m.S_Pwd)
-        </div>
-        <div>
-            @Html.LabelFor(m => m.S_CreatTime)
-            @Html.EditorFor(m => m.S_CreatTime)
+        <div class="form-group">
+            <label for="S_Path" class="col-sm-2 control-label">服务地址</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="请输入服务地址" data-val="true" data-val-required="服务地址 字段是必需的。" id="S_Path" name="S_Path"  />
+            </div>
         </div>
 
-        <div>
-            <input type="submit" value="添加" />
+        <div class="form-group">
+            <label for="S_User" class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="请输入用户名" id="S_User" name="S_User"  />
+            </div>
         </div>
-    </div>
+
+        <div class="form-group">
+            <label for="S_Pwd" class="col-sm-2 control-label">用户密码</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="请输入用户密码" data-val="true" data-val-minlength="字段 用户密码 必须是最小长度为“6”的字符串或数组类型。" data-val-minlength-min="6" id="S_Pwd" name="S_Pwd" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="S_Admin" class="col-sm-2 control-label">负责人</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="请输入负责人" id="S_Admin" name="S_Admin" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="S_Remark" class="col-sm-2 control-label">备注</label>
+            <div class="col-sm-8">
+                <textarea type="text" class="form-control text-box" placeholder="请添加备注信息" rows="5" id="S_Remark" name="S_Remark"></textarea>
+            </div> 
+        </div>
+        
+        <div  class="form-group container" >
+            
+                <input  type="submit" class="btn btn-default center-block" value="添加"  />
+           
+        </div>
 </form>
 
 
